@@ -1,0 +1,34 @@
+/***************************************************************************
+ * application name: IrisMVC
+ * release version: 3.0
+ * release status: GA  (General Availability: http://en.wikipedia.org/wiki/Software_release_life_cycle)
+ * release codename: Miha
+ * license: Microsoft Public License (Ms-PL)  http://irismvc.net/license.txt
+ * author: Costin Trifan
+ * website: http://irismvc.net/
+ *
+ * wiki: http://wiki.irismvc.net/
+ * bugs: http://bugs.irismvc.net/
+ * forums: http://irisvc.net/forums/
+ *
+ ***************************************************************************
+ */
+
+
+## Prerequisites
+-----------------------------------------------
+Before using IrisMVC 3.0 please make sure your server meets the following requirements:
+
+    * Apache 2+ (mod_rewrite enabled)
+    * PHP 5+
+    * sys-logs directory must be writable
+    * sys-temp directory must be writable (if used)
+
+
+## Changes
+-----------------------------------------------
+Since the last release the framework has been heavily revised and improved. This means that many features that were
+available in version 2.0 might not exist or work as expected in this release.
+
+If you have used this framework on your website please install it and test it locally before updating your live server!
+

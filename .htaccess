@@ -1,0 +1,52 @@
+#---------------------------------------------------------------------------------
+#  @package      IrisMVC
+#  @author       Costin Trifan
+#  @copyright    2010-2012 Costin Trifan <http://irismvc.net/>
+#  @license      Microsoft Public License (Ms-PL)  http://irismvc.net/license.txt
+#---------------------------------------------------------------------------------
+#! BEGIN IRISMVC SETTINGS
+
+#! Not all hosts allow this.
+#	Options +FollowSymLinks
+
+# Set the default file
+##===============================================
+	DirectoryIndex index.php
+
+# SET DEFAULT CHARSET TO UTF-8
+##===============================================
+	AddDefaultCharset utf-8
+
+# Prevent .htaccess and .htpasswd files from
+# being accessed from outside app scope
+##================================================
+<Files "^\.ht">
+	Order allow,deny
+	Deny from all
+</Files>
+
+# Protect specific files from being accessed from
+# outside app scope
+##===============================================
+<Files ~ "^(.*)\.(inc|inc\.php|tpl|tpl\.php|sql|ini|sqlite)$">
+  Order allow,deny
+  Deny from all
+</Files>
+
+<IfModule mod_rewrite.c>
+
+	RewriteEngine on
+
+## PROTECT INTERNAL DIRECTORIES FROM BEING ACCESSED FROM OUTSIDE APP SCOPE
+## THIS PREVENTS DIRECTORY LISTINGS AS WELL.
+#!!!!! ALLOW ACCESS TO THIS FILE EXTENSIONS (YOU CAN ALWAYS ADD/SUBTRACT MORE)
+RewriteCond $1 !\.(js|ico|gif|jpg|png|css|swf|mp3|wav|txt)$
+#!!!!! AND DISALLOW ALL OTHERS
+RewriteRule ^sys-[app|code|config|core|data|logs|temp]+?/(.*)$ sys-app/views/_error-pages/www-tricky.php
+
+## MVC REWRITE RULES
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*)$ index.php/$1 [QSA,L]
+</IfModule>
+#! END IRISMVC SETTINGS
